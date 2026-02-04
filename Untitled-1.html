@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fairy Tale Love for Fatime Zahra</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            text-align: center;
+            background: linear-gradient(45deg, #ffeb3b, #ff9800, #e91e63, #9c27b0);
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+        h1 {
+            color: #e91e63;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        .castle {
+            width: 200px;
+            height: 150px;
+            background: url('https://via.placeholder.com/200x150/8b4513/ffffff?text=Fairy+Castle') no-repeat center;
+            background-size: cover;
+            border-radius: 10px;
+            margin: 20px auto;
+            position: relative;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        .door {
+            width: 40px;
+            height: 60px;
+            background: #8b4513;
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            cursor: pointer;
+            border-radius: 5px 5px 0 0;
+            transition: background 0.3s;
+        }
+        .door:hover {
+            background: #654321;
+        }
+        .fairy {
+            font-size: 3em;
+            margin: 20px 0;
+            animation: flutter 2s infinite;
+        }
+        @keyframes flutter {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        .story {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            margin: 20px auto;
+            max-width: 500px;
+            display: none;
+            animation: bounceIn 0.5s;
+        }
+        @keyframes bounceIn {
+            0% { transform: scale(0.3); opacity: 0; }
+            50% { transform: scale(1.05); }
+            70% { transform: scale(0.9); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .magic-potion {
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, #ff1493, #ffd700);
+            border-radius: 50%;
+            margin: 20px auto;
+            cursor: pointer;
+            position: relative;
+            box-shadow: 0 0 10px #ff1493;
+            transition: transform 0.3s;
+            display: none;
+        }
+        .magic-potion:hover {
+            transform: scale(1.1);
+        }
+        .magic-potion::before {
+            content: "🧪";
+            font-size: 3em;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .final-spell {
+            font-size: 1.5em;
+            color: #9c27b0;
+            margin: 20px 0;
+            display: none;
+            animation: sparkle 1s infinite alternate;
+        }
+        @keyframes sparkle {
+            from { text-shadow: 0 0 5px #9c27b0; }
+            to { text-shadow: 0 0 20px #9c27b0, 0 0 30px #9c27b0; }
+        }
+        .bubbles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            display: none;
+        }
+        .bubble {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            animation: floatUp 4s linear infinite;
+        }
+        @keyframes floatUp {
+            0% { transform: translateY(100vh); opacity: 1; }
+            100% { transform: translateY(-20px); opacity: 0; }
+        }
+        button {
+            background: #ff9800;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            margin: 10px;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background: #e68900;
+        }
+        footer {
+            margin-top: 40px;
+            font-size: 0.9em;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <h1>Fairy Tale Love for Fatime Zahra</h1>
+    <p>Once upon a time, in a magical land... Click the castle door to begin!</p>
+    <div class="castle">
+        <div class="door" onclick="openDoor()"></div>
+    </div>
+
+    <div class="fairy">🧚‍♀️</div>
+
+    <div id="story" class="story">
+        <p>In this fairy tale, Fatime Zahra, you are the princess of my heart. Every day is an adventure with you!</p>
+    </div>
+
+    <div class="magic-potion" id="potion" onclick="drinkPotion()"></div>
+
+    <div id="final-spell" class="final-spell">And they lived happily ever after! I love you, Fatime Zahra. 💕✨</div>
+
+    <button onclick="blowBubbles()">Blow Magic Bubbles</button>
+
+    <div class="bubbles" id="bubbles"></div>
+
+    <footer>
+        A childish fairy tale, full of love for you.
+    </footer>
+
+    <script>
+        function openDoor() {
+            document.getElementById('story').style.display = 'block';
+            document.getElementById('potion').style.display = 'block';
+        }
+
+        function drinkPotion() {
+            document.getElementById('final-spell').style.display = 'block';
+        }
+
+        function blowBubbles() {
+            const bubbles = document.getElementById('bubbles');
+            bubbles.style.display = 'block';
+            for (let i = 0; i < 20; i++) {
+                const bubble = document.createElement('div');
+                bubble.className = 'bubble';
+                bubble.style.left = Math.random() * 100 + '%';
+                bubble.style.animationDelay = Math.random() * 4 + 's';
+                bubbles.appendChild(bubble);
+                setTimeout(() => bubble.remove(), 4000);
+            }
+        }
+    </script>
+</body>
+</html>
